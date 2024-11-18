@@ -193,8 +193,8 @@ if 'model' not in st.session_state:
 # upload file
 #file = st.file_uploader('', type=['jpeg', 'jpg', 'png'])
 # Display the filename in black if a file is uploaded
-if file is not None:
-    st.markdown(f"<p style='color: black;'>Opened file: <strong>{file.name}</strong></p>", unsafe_allow_html=True)
+#if file is not None:
+    #st.markdown(f"<p style='color: black;'>Opened file: <strong>{file.name}</strong></p>", unsafe_allow_html=True)
     # Optionally display the uploaded file
     #st.image(file, caption='Uploaded Image', use_column_width=True)
 # load classifier
