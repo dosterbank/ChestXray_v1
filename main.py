@@ -177,8 +177,8 @@ if file is not None:
 #gdown.download('https://drive.google.com/uc?id=1aGS42aGFmZvwfc6qzy8RD6gA_iqL7VRB', 'output.zip', quiet=False)
 
 ######################################################################
-model_path = r'fine_tuned_xray_model_280.keras'
-
+#model_path = r'fine_tuned_xray_model_280.keras'
+model_path = "/models/fine_tuned_xray_model_280.keras"
 # Load the model
 model = tf.keras.models.load_model(model_path)
 for layer in reversed(model.layers):
