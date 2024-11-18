@@ -190,7 +190,21 @@ if 'model' not in st.session_state:
     st.session_state.model = tf.keras.models.load_model(model_path)
     st.write("Model loaded and stored in session state!")
 
+###################################
+# Check if the model is loaded from session_state
+if 'model' in st.session_state:
+    st.write("Model loaded from session state!")
+else:
+    st.write("Model not loaded from session state. Loading now...")
+
+# Load the model if not already in session state
+if 'model' not in st.session_state:
+    model_path = r'fine_tuned_xray_model_280.keras'
+    st.session_state.model = tf.keras.models.load_model(model_path)
+    st.write("Model loaded and stored in session state!")
+
 # upload file
+
 #file = st.file_uploader('', type=['jpeg', 'jpg', 'png'])
 # Display the filename in black if a file is uploaded
 #if file is not None:
