@@ -168,6 +168,7 @@ def download_file_once(url):
     if 'file_downloaded' not in st.session_state:
         gdown.download(url, quiet=False)
         st.session_state.file_downloaded = True
+           print("model downloaded again check code")
 
 # Define a function to load the model once
 def load_model_once(model_path):
@@ -178,17 +179,6 @@ model_path = r'fine_tuned_xray_model_280.keras'
 download_file_once(url)
 load_model_once(model_path)
 #gdown.download(url, quiet=False)
-# Check if the model is loaded from session_state
-if 'model' in st.session_state:
-    st.write("Model loaded from session state!")
-else:
-    st.write("Model not loaded from session state. Loading now...")
-
-# Load the model if not already in session state
-if 'model' not in st.session_state:
-    model_path = r'fine_tuned_xray_model_280.keras'
-    st.session_state.model = tf.keras.models.load_model(model_path)
-    st.write("Model loaded and stored in session state!")
 
 ###################################
 # Check if the model is loaded from session_state
@@ -205,7 +195,7 @@ if 'model' not in st.session_state:
 
 # upload file
 
-#file = st.file_uploader('', type=['jpeg', 'jpg', 'png'])
+file = st.file_uploader('', type=['jpeg', 'jpg', 'png'])
 # Display the filename in black if a file is uploaded
 #if file is not None:
     #st.markdown(f"<p style='color: black;'>Opened file: <strong>{file.name}</strong></p>", unsafe_allow_html=True)
