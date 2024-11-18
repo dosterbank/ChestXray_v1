@@ -178,6 +178,11 @@ if file is not None:
 
 ######################################################################
 #model_path = r'fine_tuned_xray_model_280.keras'
+# Check the content of the "./models/" folder
+models_directory = "./models/"
+models_content = os.listdir(models_directory)
+
+models_content
 model_path = "./models/fine_tuned_xray_model_280.keras"
 # Load the model
 model = tf.keras.models.load_model(model_path)
