@@ -179,7 +179,7 @@ if file is not None:
 ######################################################################
 #model_path = r'fine_tuned_xray_model_280.keras'
 # Check the content of the "./models/" folder
-models_directory = "./models/"
+models_directory = "./ChestXray_v1/models/"
 models_content = os.listdir(models_directory)
 
 models_content
