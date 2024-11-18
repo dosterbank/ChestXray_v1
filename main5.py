@@ -226,7 +226,9 @@ grad_model = tf.keras.models.Model(
 class_names = ['Normal', 'Unhealthy']
 # $$$#########################################333333333####################
 #                       display image
+file=None
 file = st.camera_input("Take a picture")
+
 if file is not None:
     image = Image.open(file).convert('RGB') ########## image is the var
     st.image(image, use_column_width=True)  # muestra en pantalla image
