@@ -168,7 +168,7 @@ def download_file_once(url):
     if 'file_downloaded' not in st.session_state:
         gdown.download(url, quiet=False)
         st.session_state.file_downloaded = True
-           print("model downloaded again check code")
+        print("model downloaded again check code")
 
 # Define a function to load the model once
 def load_model_once(model_path):
