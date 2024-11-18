@@ -35,9 +35,3 @@ jobs:
         file_id="1xqslhXPzlymHSd22xh6-u-tLLNhR4TZu"
         url="https://drive.google.com/uc?id=${file_id}"
         gdown "$url" -O ./models/fine_tuned_xray_model_280.keras  # Correct model file name
-
-    - name: Upload model as artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: model-file
-        path: ./models/fine_tuned_xray_model_280.keras
