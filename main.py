@@ -178,7 +178,7 @@ if file is not None:
 
 ######################################################################
 #model_path = r'fine_tuned_xray_model_280.keras'
-model_path = "/models/fine_tuned_xray_model_280.keras"
+model_path = "./models/fine_tuned_xray_model_280.keras"
 # Load the model
 model = tf.keras.models.load_model(model_path)
 for layer in reversed(model.layers):
