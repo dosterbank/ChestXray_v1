@@ -21,20 +21,20 @@ jobs:
     - name: Cache model
       uses: actions/cache@v2
       with:
-        path: model_file  # Path to where the model should be saved
-        key: model-cache-key
+        path: ./models/fine_tuned_xray_model_280.keras  # Specify the correct path for the model file
+        key: ${{ runner.os }}-model-cache-key-${{ hashFiles('**/requirements.txt') }}
         restore-keys: |
-          model-cache-key
+          ${{ runner.os }}-model-cache-key-
 
     - name: Download model from Google Drive if cache is missing
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
         file_id="1xqslhXPzlymHSd22xh6-u-tLLNhR4TZu"
         url="https://drive.google.com/uc?id=${file_id}"
-        gdown "$url" -O model_file  # Replace with actual model file name
+        gdown "$url" -O ./models/fine_tuned_xray_model_280.keras  # Correct model file name
 
     - name: Upload model as artifact
       uses: actions/upload-artifact@v2
       with:
         name: model-file
-        path: model_file
+        path: ./models/fine_tuned_xray_model_280.keras  # Correct path to the model
