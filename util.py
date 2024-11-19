@@ -34,6 +34,100 @@ from tensorflow.keras.applications import VGG19
 #predictions_str = ""
 last_conv_layer_name = None
 image=None
+img_array=""
+def set_background_and_white(image_file):
+    """
+    Sets a responsive background image for Streamlit app while ensuring white background
+    
+    Parameters:
+        image_file (str): Path to the background image file
+    """
+    with open(image_file, "rb") as f:
+        img_data = f.read()
+    b64_encoded = base64.b64encode(img_data).decode()
+    style = f"""
+        <style>
+        body {{
+            background-color: white !important;
+        }}
+        
+        .stApp {{
+            background-color: white !important;
+            background-image: url(data:image/png;base64,{b64_encoded});
+            background-size: 100% 100%;  /* Full width and height */
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: scroll;  /* Changed from fixed for mobile */
+        }}
+        
+        @media screen and (max-width: 1024px) {{
+            .stApp {{
+                background-size: contain;  /* Cover the entire screen */
+            }}
+        }}
+        
+        @media screen and (max-width: 768px) {{
+            .stApp {{
+                background-size: contain;
+                background-position: center;
+            }}
+        }}
+        
+        @media screen and (max-width: 480px) {{
+            .stApp {{
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+            }}
+        }}
+        </style>
+    """
+    st.markdown(style, unsafe_allow_html=True)
+######################## Responsive background
+def set_background_res(image_file):
+    """
+    Sets a responsive background image for Streamlit app
+    
+    Parameters:
+        image_file (str): Path to the background image file
+    """
+    with open(image_file, "rb") as f:
+        img_data = f.read()
+    b64_encoded = base64.b64encode(img_data).decode()
+    style = f"""
+        <style>
+        .stApp {{
+            background-image: url(data:image/png;base64,{b64_encoded});
+            background-size: 100% 100%;  /* Full width and height */
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: scroll;  /* Changed from fixed for mobile */
+        }}
+        
+        @media screen and (max-width: 1024px) {{
+            .stApp {{
+                background-size: contain;  /* Cover the entire screen */
+            }}
+        }}
+        
+        @media screen and (max-width: 768px) {{
+            .stApp {{
+                background-size: contain;
+                
+                background-position: center;
+            }}
+        }}
+        
+        @media screen and (max-width: 480px) {{
+            .stApp {{
+                background-size:  contain;
+                background-position: center;
+                background-repeat: no-repeat;
+            }}
+        }}
+        </style>
+    """
+    st.markdown(style, unsafe_allow_html=True)
 ###############################################################################
 def set_background(image_file):
     """
@@ -72,9 +166,10 @@ def classify(image, model, class_names):
     Returns:
         A tuple of the predicted class name and the confidence score for that prediction.
     """
-    predictions_str = ""
+    
+    
     image_index=0
-    img_array=""
+    predictions_str = ""
     # Resize image to (280, 280)
     image = ImageOps.fit(image, (280, 280), Image.Resampling.LANCZOS)
     #img = load_img(image_path, target_size=(280, 280))  # Adjust size if different
