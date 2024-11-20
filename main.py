@@ -248,7 +248,7 @@ class_names = ['Normal', 'Unhealthy']
 ################################################################################
 # $$$########################################Camera Upload 33####################
 #                       display image
-file = st.camera_input("Take a picture")
+#file = st.camera_input("Take a picture") #Uncoment to unlock camera, it has errors predicting due to low resolution
 if file is not None:
     image = Image.open(file).convert('RGB') ########## image is the var
     #st.image(image, use_column_width=True)  # muestra en pantalla image
