@@ -124,6 +124,7 @@ img_array1=None
 img_array=None
 results=None
 prediction=None
+file=None
 #img_array="gradcam_overlayed.jpg"
 #img_array=None
 #image_index = 0  # Since you are using a single image, the index is 0
